@@ -5,7 +5,7 @@
 
 	// URL для перенаправления после успешного входа
 	// Это может быть ваш серверный эндпоинт, который будет проверять данные
-	const redirectUrl = 'https://kyivgold.pp.ua/telegram/auth';
+	const redirectUrl = 'https://kyivgold.pp.ua/workshop/hs/telegram/auth';
 
 	onMount(async () => {
 		// Убедитесь, что DOM обновлен перед попыткой найти контейнер
