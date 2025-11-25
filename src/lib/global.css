@@ -1,0 +1,20 @@
+:root {
+	--main-color: #8f6e50;
+	--main-color-rgb: 143, 110, 80;
+	--main-active-color: #7b5a3c;
+	--background-color: white;
+	--icons-color: #858585;
+	--common-text-dark: #333;
+	--common-text-light: #888;
+	--common-bg-light: #f9f9f9;
+	--common-border: #e0e0e0;
+	--common-border-dark: #ccc;
+}
+
+body {
+	font-family: Roboto, sans-serif;
+	background: var(--background-color);
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
