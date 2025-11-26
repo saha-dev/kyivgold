@@ -2,9 +2,10 @@
 	import { onMount } from 'svelte';
 	let state: string;
 	let waiting = false;
+	let authorized = false;
 
 	onMount(() => {
-		state = crypto.randomUUID(); // login_ABC123
+		state = crypto.randomUUID(); // уникальный state
 	});
 
 	function startLogin() {
@@ -20,19 +21,24 @@
 			const data = JSON.parse(event.data);
 			console.log('User authorized:', data);
 			evtSource.close();
-			// Редирект на профиль после успешной авторизации
-			window.location.href = '/profile';
+
+			// Меняем состояние, чтобы отобразить текст "Вы авторизованы"
+			authorized = true;
+			waiting = false;
 		});
 
 		evtSource.onerror = () => {
 			console.error('SSE connection lost');
 			evtSource.close();
+			waiting = false;
 		};
 	}
 </script>
 
-{#if !waiting}
-	<button on:click={startLogin}> Login via Telegram </button>
-{:else}
+{#if authorized}
+	<p>Вы авторизованы ✅</p>
+{:else if waiting}
 	<p>Ждём подтверждения в Telegram...</p>
+{:else}
+	<button on:click={startLogin}>Login via Telegram</button>
 {/if}
