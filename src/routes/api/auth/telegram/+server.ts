@@ -7,7 +7,10 @@ export const POST: RequestHandler = async ({ request }) => {
 	const { telegramId, username, sessionId } = data;
 
 	if (!sessionId || !telegramId) {
-		return new Response('Missing data', { status: 400 });
+		return new Response(
+			`Missing data telegramId:'${telegramId}' username:'${username}' sessionId:'${sessionId}'`,
+			{ status: 400 }
+		);
 	}
 
 	sessions[sessionId] = {
