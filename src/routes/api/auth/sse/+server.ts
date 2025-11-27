@@ -3,13 +3,13 @@ import type { RequestHandler } from './$types';
 import { sessions } from '$lib/sessions';
 
 export const GET: RequestHandler = ({ url }) => {
-	const state = url.searchParams.get('state');
-	if (!state) return new Response('State required', { status: 400 });
+	const sessionId = url.searchParams.get('sessionId');
+	if (!sessionId) return new Response('State required', { status: 400 });
 
 	const stream = new ReadableStream({
 		start(controller) {
 			const check = setInterval(() => {
-				const session = sessions[state];
+				const session = sessions[sessionId];
 				if (session?.authorized) {
 					controller.enqueue(
 						new TextEncoder().encode(`event: authorized\ndata: ${JSON.stringify(session)}\n\n`)

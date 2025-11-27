@@ -4,20 +4,19 @@ import { sessions } from '$lib/sessions';
 
 export const POST: RequestHandler = async ({ request }) => {
 	const data = await request.json();
-	const { telegram_id, username, state } = data;
+	const { telegram_id, username, sessionId } = data;
 
-	if (!state || !telegram_id) {
+	if (!sessionId || !telegram_id) {
 		return new Response('Missing data', { status: 400 });
 	}
 
-	// Привязываем telegram_id к сессии с уникальным state
-	sessions[state] = {
+	sessions[sessionId] = {
 		telegram_id,
 		username,
 		authorized: true
 	};
 
-	console.log('User authorized:', sessions[state]);
+	console.log('User authorized:', sessions[sessionId]);
 
 	return new Response('OK');
 };

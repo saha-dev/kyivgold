@@ -1,5 +1,5 @@
 <script lang="ts">
-	import TelegramLogin2 from '$lib/components/telegram/TelegramLogin2.svelte';
+	import TelegramLogin from '$lib/components/telegram/TelegramLogin.svelte';
 </script>
 
-<TelegramLogin2 />
+<TelegramLogin />
