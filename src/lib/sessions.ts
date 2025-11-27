@@ -1,6 +1,6 @@
 // src/lib/sessions.ts
 interface Session {
-	telegram_id?: number;
+	telegramId?: number;
 	username?: string;
 	authorized?: boolean;
 }

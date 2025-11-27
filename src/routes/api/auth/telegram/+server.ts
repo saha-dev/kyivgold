@@ -4,14 +4,14 @@ import { sessions } from '$lib/sessions';
 
 export const POST: RequestHandler = async ({ request }) => {
 	const data = await request.json();
-	const { telegram_id, username, sessionId } = data;
+	const { telegramId, username, sessionId } = data;
 
-	if (!sessionId || !telegram_id) {
+	if (!sessionId || !telegramId) {
 		return new Response('Missing data', { status: 400 });
 	}
 
 	sessions[sessionId] = {
-		telegram_id,
+		telegramId,
 		username,
 		authorized: true
 	};
