@@ -4,7 +4,6 @@
 	let mainMenu = $state(true);
 
 	const categories = getCategories();
-	console.log('categories', categories);
 </script>
 
 <div class="menu-content">

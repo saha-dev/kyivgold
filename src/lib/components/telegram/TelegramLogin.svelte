@@ -38,8 +38,6 @@
 			return;
 		}
 
-		console.log('startSSE');
-
 		waiting = true;
 		error = false;
 
@@ -47,7 +45,6 @@
 			evtSource.close();
 		}
 
-		console.log(sseLink);
 		evtSource = new EventSource(sseLink);
 
 		// Обработчик успешной авторизации

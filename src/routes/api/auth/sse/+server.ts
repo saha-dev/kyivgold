@@ -5,7 +5,6 @@ import { sessions } from '$lib/sessions';
 export const GET: RequestHandler = ({ url }) => {
 	const sessionId = url.searchParams.get('sessionId');
 
-	console.log('sessionId', sessionId);
 	if (!sessionId) return new Response('State required', { status: 400 });
 
 	const stream = new ReadableStream({
